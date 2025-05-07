@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주문 관리 테스트 페이지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, button, select {
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    #response {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+<h1>주문 관리 테스트 페이지</h1>
+
+<!-- 주문 생성 -->
+<section>
+  <h2>1. 주문 생성</h2>
+  <label for="create-orderMaster">상품 ID 및 수량 리스트 (JSON 형식)</label>
+  <textarea id="create-orderMaster" cols="50" rows="5" placeholder='예: [{"productId": 1000000001, "quantity": 1}, {"productId": 1000000002, "quantity": 2}]'></textarea>
+  <button onclick="createOrder()">주문 생성</button>
+</section>
+
+<!-- 주문 취소 -->
+<section>
+  <h2>2. 주문 상품 개별 취소</h2>
+  <label for="cancel-orderMaster-id">주문 번호</label>
+  <input type="number" id="cancel-orderMaster-id" placeholder="예: 1">
+  <label for="cancel-product-id">취소할 상품 ID</label>
+  <input type="number" id="cancel-product-id" placeholder="예: 1000000001">
+  <button onclick="cancelOrder()">주문 상품 취소</button>
+</section>
+
+<!-- 주문 상세 조회 -->
+<section>
+  <h2>3. 주문 상세 조회</h2>
+  <label for="get-orderMaster-id">주문 번호</label>
+  <input type="number" id="get-orderMaster-id" placeholder="예: 1">
+  <button onclick="getOrderDetails()">주문 조회</button>
+</section>
+
+<!-- API 응답 결과 -->
+<section id="response">
+  <h2>API 응답</h2>
+  <pre id="api-response">여기에 API 응답이 표시됩니다.</pre>
+</section>
+
+<script>
+  // 서버 URL
+  const SERVER_URL = 'http://localhost:8080/api';
+
+  // 주문 생성 함수
+  async function createOrder() {
+    const orderData = document.getElementById('create-orderMaster').value;
+    try {
+      const response = await fetch(`${SERVER_URL}/orders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: orderData
+      });
+      const result = await response.json();
+      displayResponse(result);
+    } catch (err) {
+      displayResponse({ error: err.message });
+    }
+  }
+
+  // 주문 상품 취소 함수
+  async function cancelOrder() {
+    const orderId = document.getElementById('cancel-orderMaster-id').value;
+    const productId = document.getElementById('cancel-product-id').value;
+    try {
+      const response = await fetch(`${SERVER_URL}/orders/${orderId}/cancel`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ productId: parseInt(productId) })
+      });
+      const result = await response.json();
+      displayResponse(result);
+    } catch (err) {
+      displayResponse({ error: err.message });
+    }
+  }
+
+  // 주문 상세 조회 함수
+  async function getOrderDetails() {
+    const orderId = document.getElementById('get-orderMaster-id').value;
+    try {
+      const response = await fetch(`${SERVER_URL}/orders/${orderId}`);
+      const result = await response.json();
+      displayResponse(result);
+    } catch (err) {
+      displayResponse({ error: err.message });
+    }
+  }
+
+  // API 응답 표시 함수
+  function displayResponse(response) {
+    document.getElementById('api-response').innerText = JSON.stringify(response, null, 2);
+  }
+</script>
+</body>
+</html>
