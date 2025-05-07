@@ -113,7 +113,7 @@ src/
 ### 1. 프로젝트 클론
 ``` bash
 git clone https://github.com/2chung9/order-management
-cd orderMaster-management
+cd order-management
 ```
 ### 2. 프로젝트 실행
 ``` bash
