@@ -83,7 +83,7 @@ src/
   ]
 }
 ```
-### 2. 주문 상품 취소 API (POST `/api/order/{orderId}/cancel`)
+### 2. 주문 상품 취소 API (POST `/api/order/cancel/{orderId}/{productId}`)
 - **요청 Body 예시**:
 ``` json
 {
