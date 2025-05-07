@@ -121,8 +121,8 @@ cd order-management
 ```
 ### 3. H2 콘솔 접속 (H2 데이터베이스 확인용)
 - 접속 경로: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:testdb`
-- 사용자명: `sa`, 비밀번호: `password`
+- JDBC URL: `jdbc:h2:mem:ssgdb`
+- 사용자명: `sa` (비밀번호: 없음)
 
 ### 4. Swagger-UI 접속 (API 문서 확인용)
 - 접속 경로: `http://localhost:8080/swagger-ui/index.html#/`
