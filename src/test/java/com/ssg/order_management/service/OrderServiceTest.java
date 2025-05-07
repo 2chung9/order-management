@@ -90,7 +90,7 @@ class OrderServiceTest {
         orderMaster.setTotalPrice(2000);
         orderItem.setOrderMaster(orderMaster);
 
-        when(orderItemRepository.findByIdAndProductId(1L, 1L)).thenReturn(Optional.of(orderItem));
+        when(orderItemRepository.findByOrderMaster_IdAndProduct_Id(1L, 1L)).thenReturn(Optional.of(orderItem));
 
         // when
         OrderCancelResponseDto response = orderService.cancelOrderItem(1L, 1L);
