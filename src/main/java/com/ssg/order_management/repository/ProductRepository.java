@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    // 특정 상품의 재고 업데이트를 위한 메서드
+    // 특정 상품 상세조회
     Optional<Product> findById(Long productId);
 
-    // 전체 상품 리스트 조회를 위한 메서드
+    // 전체 상품 리스트 조회
     List<Product> findAll();
 }
 

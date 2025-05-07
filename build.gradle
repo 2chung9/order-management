@@ -30,7 +30,7 @@ dependencies {
 
 	// H2 Database
 	runtimeOnly 'com.h2database:h2'
-	implementation 'com.h2database:h2:2.2.224' // 최신 버전 확인 후 적절히 변경
+	implementation 'com.h2database:h2:2.2.224'
 
 	// Lombok
 	compileOnly 'org.projectlombok:lombok'
