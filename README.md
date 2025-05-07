@@ -112,7 +112,7 @@ src/
 ## 실행 방법
 ### 1. 프로젝트 클론
 ``` bash
-git clone <repository-url>
+git clone https://github.com/2chung9/order-management
 cd orderMaster-management
 ```
 ### 2. 프로젝트 실행
