@@ -67,7 +67,7 @@ order-management/
 │   │   │   └── OrderServiceTest.java  // 주문 서비스 테스트 클래스
 ├── build.gradle                       // Gradle 빌드 설정 파일
 ├── settings.gradle                    // Gradle 설정 파일
-├── run.s                            // 실행 스크립트
+├── run.sh                             // 실행 스크립트
 ├── README.md                          // 프로젝트 설명 파일
 ├── .gitignore                         // Git 무시 규칙 파일
 ├── .gitattributes                     // Git 속성 파일
