@@ -16,7 +16,7 @@ import java.util.List;
 public class OrderCreateRequestDto {
 
     @Schema(description = "주문 상품 리스트"
-            , example = "[{\"productId\":1,\"quantity\":2}]")
+            , example = "[{\"productId\":1000000001,\"quantity\":2}]")
     private List<OrderItemDto> items;
 }
 
