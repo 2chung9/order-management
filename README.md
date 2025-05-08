@@ -161,6 +161,8 @@ cd order-management
 ./gradlew test
 ```
 - JUnit5 및 Mockito를 사용하여 서비스 로직과 API 컨트롤러에 대한 단위 테스트를 작성했습니다.
+- **테스트 클래스 위치**: `src/test/java/com/ssg/order_management/service/OrderServiceTest.java`
+
 
 ### 5. 테스트 페이지
 애플리케이션에는 간단한 테스트 페이지가 포함되어 있습니다. 해당 페이지는 브라우저를 통해 접근 가능하며, 주문 API를 간편하게 테스트할 수 있도록 설계되었습니다.
