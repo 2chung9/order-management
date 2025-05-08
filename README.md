@@ -28,21 +28,49 @@
 
 ## 프로젝트 구조
 ``` plaintext
-src/
-├── main/
-│   ├── java/com/ssg/order_management/
-│   │   ├── controller/     // REST API 컨트롤러
-│   │   ├── service/        // 비즈니스 로직
-│   │   ├── repository/     // JpaRepository 인터페이스 (DB와 상호작용)
-│   │   ├── dto/            // 요청과 응답을 처리하는 DTO
-│   │   └── entity/         // JPA 엔티티 클래스
-│   └── resources/
-│       ├── application.yml // 애플리케이션 설정 (H2 DB 연결 포함)
-│       └── data.sql         // 초기 상품 데이터
-└── test/
-    ├── java/com/ssg/order_management/
-        ├── controller/     // API 단위 테스트
-        ├── service/        // 서비스 로직 테스트
+order-management/
+├── src/
+│   ├── main/
+│   │   ├── java/com/ssg/order_management/
+│   │   │   ├── controller/
+│   │   │   │   └── OrderController.java  // 주문 관련 API 컨트롤러
+│   │   │   ├── dto/
+│   │   │   │   ├── OrderCancelResponseDto.java   // 주문 취소 응답 DTO
+│   │   │   │   ├── OrderCreateRequestDto.java   // 주문 생성 요청 DTO
+│   │   │   │   ├── OrderCreateResponseDto.java  // 주문 생성 응답 DTO
+│   │   │   │   ├── OrderDetailItemDto.java      // 주문 상세 아이템 DTO
+│   │   │   │   ├── OrderDetailResponseDto.java  // 주문 상세 응답 DTO
+│   │   │   │   ├── OrderItemDto.java            // 주문 아이템 DTO
+│   │   │   │   ├── OrderItemResponseDto.java    // 주문 응답 아이템 DTO
+│   │   │   │   └── ProductResponseDto.java      // 상품 응답 DTO
+│   │   │   ├── entity/
+│   │   │   │   ├── OrderItem.java   // 주문 아이템 엔티티
+│   │   │   │   ├── OrderMaster.java // 주문 마스터 엔티티
+│   │   │   │   └── Product.java     // 상품 엔티티
+│   │   │   ├── exception/
+│   │   │   │   ├── ErrorCode.java                // 에러 코드 정의
+│   │   │   │   ├── ErrorResponse.java            // 에러 응답 객체
+│   │   │   │   ├── GlobalExceptionHandler.java   // 글로벌 예외 처리 핸들러
+│   │   │   │   └── OrderManagementException.java // 커스텀 예외 클래스
+│   │   │   ├── repository/
+│   │   │   │   ├── OrderItemRepository.java   // 주문 아이템 리포지토리
+│   │   │   │   ├── OrderMasterRepository.java // 주문 마스터 리포지토리
+│   │   │   │   └── ProductRepository.java     // 상품 리포지토리
+│   │   │   └── OrderManagementApplication.java // Spring Boot 메인 애플리케이션 클래스
+│   │   ├── resources/
+│   │   │   ├── application.properties // 애플리케이션 설정 파일
+│   │   │   ├── data.sql                // 초기 데이터 스크립트
+│   │   │   └── static/
+│   │   │       └── test.html          // 정적 웹 페이지 테스트 파일
+│   ├── test/
+│   │   ├── java/com/ssg/order_management/service/
+│   │   │   └── OrderServiceTest.java  // 주문 서비스 테스트 클래스
+├── build.gradle                       // Gradle 빌드 설정 파일
+├── settings.gradle                    // Gradle 설정 파일
+├── run.sh                             // 실행 스크립트
+├── README.md                          // 프로젝트 설명 파일
+├── .gitignore                         // Git 무시 규칙 파일
+├── .gitattributes                     // Git 속성 파일
 ```
 ## 기술 스택
 - **백엔드**: Java 8, Spring Boot 2.7, Spring Data JPA
